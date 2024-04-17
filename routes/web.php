@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,7 @@ Route::view('profile', 'profile')
     ->name('profile');
 Route::middleware('auth')->group(function () {
     Route::resource('animals', AnimalController::class);
+    Route::resource('products', ProductController::class)->only(['index']);
 });
 
 
