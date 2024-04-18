@@ -19,7 +19,7 @@
             <div class="px-4 py-3 w-72">
                 <p class="text-lg font-bold text-black truncate block capitalize">{{$product->name}}</p>
                 <div class="flex items-center">
-                    <p class="text-rose-400 text-lg font-semibold text-black cursor-auto my-3 ">$149</p>
+                    <p class="text-rose-400 text-lg font-semibold text-black cursor-auto my-3 ">BDT {{$product->price/100}}</p>
                 </div>
                           <div>
         <button class="text-white text-md font-semibold bg-red-400 py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110 ">Buy Now</button>
