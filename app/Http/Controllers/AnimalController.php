@@ -37,6 +37,12 @@ class AnimalController extends Controller
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'age' => 'integer',
+            'weight' => 'integer',
+            'breed' => 'string',
+            'gender' => 'string',
+            'injured' => 'boolean'
+
         ]);
         if ($request->hasFile('featured_image')) {
             // put image in the public storage

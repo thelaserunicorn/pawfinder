@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Animal extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'featured_image'];
+    protected $fillable = ['name', 'featured_image', 'age', 'breed', 'weight', 'gender', 'injured'];
 
     public function user() : BelongsTo
     {

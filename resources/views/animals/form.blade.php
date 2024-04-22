@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{-- Use 'Edit' for edit mode and create for non-edit/create mode --}}
-            {{ isset($post) ? 'Edit' : 'Create' }}
+            {{ isset($post) ? 'Edit Animal' : 'Create Animal Post' }}
         </h2>
     </x-slot>
 
@@ -21,11 +21,58 @@
                             @method('put')
                         @endisset
 
-                        <div>
-                            <x-input-label for="name" value="Name" />
-                            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="$animal->name ?? old('name')" required autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+
+                        <div class="flex flex-wrap justify-between">
+    <div class="w-5/12 pr-2">
+        <div>
+            <x-input-label for="name" value="Name" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="$animal->name ?? old('name')" required autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+    </div>
+
+    <div class="w-1/4 px-2">
+        <div>
+            <x-input-label for="age" value="Age" />
+            <x-text-input id="age" name="age" type="number" class="mt-1 block w-full" :value="$animal->age ?? old('age')" required autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('age')" />
+        </div>
+    </div>
+
+    <div class="w-1/4 pl-2">
+        <div>
+            <x-input-label for="weight" value="Weight" />
+            <x-text-input id="weight" name="weight" type="number" class="mt-1 block w-full" :value="$animal->weight ?? old('weight')" required autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('weight')" />
+        </div>
+    </div>
+</div>
+                        <div class="flex flex-wrap justify-between mt-4">
+    <div class="w-5/12 pr-2">
+        <div>
+            <x-input-label for="breed" value="Breed" />
+            <x-text-input id="breed" name="breed" type="text" class="mt-1 block w-full" :value="$animal->breed ?? old('breed')" required autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('breed')" />
+        </div>
+    </div>
+
+    <div class="w-1/4 pl-2">
+        <div>
+            <x-input-label for="gender" value="Gender (Male or Female)" />
+            <x-text-input id="gender" name="gender" type="text" class="mt-1 block w-full" :value="$animal->gender ?? old('gender')" required autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('gender')" />
+        </div>
+    </div>
+                            <div class="w-1/4 pr-2 mt-2 pl-2">
+                                <div>
+
+                                    <x-input-label for="injured" value="Is Injured" />
+                                    <input type="checkbox" value="1" id="injured" name="injured" class="form-checkbox h-5 w-5 text-rose-600" {{old('injured', isset($animal) && $animal->injured) ? 'checked' : '' }}>
+                                    <x-input-error class="mt-2" :messages="$errors->get('injured')" />
+                                </div>
+                            </div>
                         </div>
+
 
 
                         <div>
