@@ -36,6 +36,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'address',
+        'is_shelter',
+        'shelter_capacity',
+        'budget'
     ];
 
     /**

@@ -15,6 +15,11 @@ new #[Layout('layouts.guest')] class extends Component
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
+    public string $address = '';
+    public bool $is_shelter = false;
+    public int $shelter_capacity = 0;
+    public int $budget = 0;
+
 
     /**
      * Handle an incoming registration request.
@@ -25,6 +30,10 @@ new #[Layout('layouts.guest')] class extends Component
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            'address' => ['string', 'max:255'],
+            'is_shelter' => ['boolean'],
+            'shelter_capacity' => ['int'],
+            'budget' => ['int'],
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
@@ -53,6 +62,29 @@ new #[Layout('layouts.guest')] class extends Component
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <div>
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-input wire:model="address" id="address" class="block mt-1 w-full" type="text" name="address" required autofocus autocomplete="address" />
+            <x-input-error :messages="$errors->get('address')" class="mt-2" />
+        </div>
+
+
+        <div class="mt-4 mb-4">
+            <label for="is_shelter" class="block font-medium text-sm text-gray-700">Are you representing a shelter?</label>
+            <input type="checkbox" class="form-checkbox h-4 w-4 text-rose-600 transition duration-150 ease-in-out" id="is_shelter" wire:model="is_shelter">
+        </div>
+
+
+        <div>
+            <x-input-label for="shelter_capacity" :value="__('Shelter Capacity')" />
+            <x-text-input wire:model="shelter_capacity" id="shelter_capacity" class="block mt-1 w-full" type="number" name="shelter_capacity" required autofocus autocomplete="shelter_capacity" />
+            <x-input-error :messages="$errors->get('shelter_capacity')" class="mt-2" />
+        </div>
+        <div>
+            <x-input-label for="budget" :value="__('Budget')" />
+            <x-text-input wire:model="budget" id="budget" class="block mt-1 w-full" type="number" name="budget" required autofocus autocomplete="budget" />
+            <x-input-error :messages="$errors->get('budget')" class="mt-2" />
+        </div>
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
