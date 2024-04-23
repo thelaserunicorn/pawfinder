@@ -7,7 +7,7 @@
 
 
 
-    <div class="bg-slate-50 py-8">
+    <div class="bg-white py-8">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row -mx-4">
             <div class="md:flex-1 px-4">
@@ -16,8 +16,16 @@
                 </div>
                 <div class="flex -mx-2 mb-4">
                     <div class="w-1/2 px-2 m-2">
-                    <a href="{{ route('animals.index') }}" class="w-full bg-rose-600 text-white py-2 px-4 rounded-full font-bold hover:bg-rose-700">Go Back</a>
+
+                                     @if ($animal->user->is(auth()->user()))
+                                    <form method="post" action="{{ route('animals.destroy', $animal->id) }}" class="inline">
+                                        @csrf
+                                        @method('delete')
+                                    <button class="border-solid border-2 border-rose-600 w-full text-rose-600 py-2 px-4 rounded-lg font-bold hover:bg-rose-600 hover:text-white">Delete</a>
+                                    </form>
+                                                                @endif
                     </div>
+
                 </div>
             </div>
             <div class="md:flex-1 px-4">
@@ -52,7 +60,7 @@
                 </div>
                 <div>
                     <span class="font-bold text-slate-600">vet?:</span>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm mt-2">
+                    <p class="text-slate text-sm mt-2">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                         sed ante justo. Integer euismod libero id mauris malesuada tincidunt. Vivamus commodo nulla ut
                         lorem rhoncus aliquet. Duis dapibus augue vel ipsum pretium, et venenatis sem blandit. Quisque
@@ -62,16 +70,12 @@
                 </div>
 
                     <div class="mt-10">
+                    <a href="{{ route('animals.index') }}" class="w-full bg-rose-600 text-white py-2 px-4 rounded-full font-bold hover:bg-rose-700">Go Back</a>
                                      @if ($animal->user->is(auth()->user()))
 
-                                    <a href="{{ route('animals.edit', $animal->id) }}" class="w-full bg-rose-600 text-white py-2.5 px-4 rounded-lg font-bold hover:bg-rose-400">Edit</a>
-                                    {{-- add delete button using form tag --}}
-                                    <form method="post" action="{{ route('animals.destroy', $animal->id) }}" class="inline">
-                                        @csrf
-                                        @method('delete')
-                                    <a class="border-solid border-2 border-rose-600 w-full text-rose-600 py-2 px-4 rounded-lg font-bold hover:bg-rose-600 hover:text-white">Delete</a>
-                                    </form>
+                                    <a href="{{ route('animals.edit', $animal->id) }}" class="w-full bg-rose-600 text-white py-2 px-4 rounded-full font-bold hover:bg-rose-700">Edit</a>
                                                                 @endif
+                    <a href="{{ route('animals.index') }}" class="w-full bg-rose-600 text-white py-2 px-4 rounded-full font-bold hover:bg-rose-700">Send Request</a>
                         </div>
             </div>
         </div>
