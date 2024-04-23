@@ -20,6 +20,9 @@ Route::view('/', 'welcome');
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+Route::view('payment', 'products.payment')
+    ->middleware(['auth', 'verified'])
+    ->name('payment');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])

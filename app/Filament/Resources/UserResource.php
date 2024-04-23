@@ -8,16 +8,25 @@ use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Components\Component;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Pages\Actions\Action;
+use Filament\Notifications\Notification;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
+    protected static ?string $pluralModelLabel = "Shelters";
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
+
+    public static function getEloquentQuery(): Builder
+{
+    return static::getModel()::query()->where('is_shelter', 1);
+}
 
     public static function form(Form $form): Form
     {
@@ -25,6 +34,7 @@ class UserResource extends Resource
             ->schema([
                 //
                 Forms\Components\TextInput::make('name'),
+                Forms\Components\TextInput::make('budget'),
                 Forms\Components\TextInput::make('email')
                     ->email(),
             Forms\Components\Select::make('roles')
@@ -42,15 +52,21 @@ class UserResource extends Resource
                 //
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('roles.name'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
+                Tables\Columns\BooleanColumn::make('is_shelter'),
+                Tables\Columns\TextColumn::make('budget')->sortable(),
+
             ])
+            ->defaultSort('budget', 'asc')
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+            Tables\Actions\Action::make("Donate")
+                    ->requiresConfirmation()
+                    ->modalHeading('Donate to shelter?')
+                    ->color('success')
+                    ->modalDescription('Are you sure you\'d like to donate to this shelter? This cannot be undone.')
+                    ->modalSubmitActionLabel('Yes, donate')
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -65,6 +81,7 @@ class UserResource extends Resource
             //
         ];
     }
+
 
     public static function getPages(): array
     {

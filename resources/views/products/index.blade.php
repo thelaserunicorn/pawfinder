@@ -22,7 +22,8 @@
                     <p class="text-rose-600 text-lg font-semibold text-black cursor-auto my-3 ">BDT {{$product->price/100}}</p>
                 </div>
                           <div>
-        <button class="text-white text-md font-semibold bg-rose-600 py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110 ">Buy Now</button>
+<a href="{{ route('payment') }}" class="w-full bg-rose-600 text-white py-2 px-4 rounded-lg font-bold hover:bg-rose-700">Buy Now</a>
+
       </div>
             </div>
         </a>
