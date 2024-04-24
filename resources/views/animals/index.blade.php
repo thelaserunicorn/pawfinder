@@ -24,13 +24,14 @@
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{$animal->name}}</h5>
         </a>
         <p class="mb-3 font-bold text-slate-800">Posted At: {{$animal->created_at}}</p>
+        <p class="mb-3 font-bold text-slate-800">Animal ID: {{$animal->id}}</p>
         <p class="mb-3 font-normal text-slate-700">Age: {{$animal->age}}</p>
         <p class="mb-3 font-normal text-gray-700">Weight (kg): {{$animal->weight}}</p>
         <p class="mb-3 font-normal text-gray-700">Breed: {{$animal->breed}}</p>
         <a href="{{ route('animals.show', $animal->id) }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-red-300">
                     Learn More </a>
 
-        <a href="{{ route('animals.show', $animal->id) }}" class="border-solid border-2 border-rose-600 w-full text-rose-600 py-2 px-4 rounded-lg font-bold hover:bg-rose-600 hover:text-white">
+        <a href="{{route('sendrequest.create')}}" class="border-solid border-2 border-rose-600 w-full text-rose-600 py-2 px-4 rounded-lg font-bold hover:bg-rose-600 hover:text-white">
                     Send Request </a>
     </div>
 </div>

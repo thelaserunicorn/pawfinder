@@ -38,6 +38,10 @@
                 </p>
                 <div class="flex mb-4">
                     <div class="mr-4">
+                        <span class="font-bold text-slate-600">ID:</span>
+                        <span class="font-bold text-slate-800">{{$animal->id}}</span>
+                    </div>
+                    <div class="mr-4">
                         <span class="font-bold text-slate-600">Age:</span>
                         <span class="text-slate-600">{{$animal->age}}</span>
                     </div>
@@ -48,6 +52,7 @@
                     <div class="mr-4">
                         <span class="font-bold text-slate-600">Weight: </span>
                         <span class="text-slate-600">{{$animal->weight}}</span>
+                        <span class="text-slate-600">KG</span>
                     </div>
                     <div class="mr-4">
                         <span class="font-bold text-slate-600">Breed:</span>
@@ -75,7 +80,7 @@
 
                                     <a href="{{ route('animals.edit', $animal->id) }}" class="w-full bg-rose-600 text-white py-2 px-4 rounded-full font-bold hover:bg-rose-700">Edit</a>
                                                                 @endif
-                    <a href="{{ route('animals.index') }}" class="w-full bg-rose-600 text-white py-2 px-4 rounded-full font-bold hover:bg-rose-700">Send Request</a>
+                    <a href="{{ route('sendrequest.create') }}" class="w-full bg-rose-600 text-white py-2 px-4 rounded-full font-bold hover:bg-rose-700">Send Request</a>
                         </div>
             </div>
         </div>

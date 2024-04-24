@@ -67,6 +67,7 @@ class UserResource extends Resource
                     ->color('success')
                     ->modalDescription('Are you sure you\'d like to donate to this shelter? This cannot be undone.')
                     ->modalSubmitActionLabel('Yes, donate')
+                    ->action(fn () => redirect()->route('donation'))
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

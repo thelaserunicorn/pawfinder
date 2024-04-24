@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SendReqController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,9 @@ Route::view('dashboard', 'dashboard')
 Route::view('payment', 'products.payment')
     ->middleware(['auth', 'verified'])
     ->name('payment');
+Route::view('donation', 'products.donation')
+    ->middleware(['auth', 'verified'])
+    ->name('donation');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
@@ -32,5 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('products', ProductController::class)->only(['index']);
 });
 
+Route::resource('sendrequest', SendReqController::class)
+    ->only(['index','create','store'])
+    ->middleware(['auth']);
 
 require __DIR__.'/auth.php';
