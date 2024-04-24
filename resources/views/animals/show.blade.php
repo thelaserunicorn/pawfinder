@@ -49,6 +49,8 @@
                         <span class="font-bold text-slate-600">Gender:</span>
                         <span class="text-slate-600">{{$animal->gender}}</span>
                     </div>
+                </div>
+                <div class="mb-4">
                     <div class="mr-4">
                         <span class="font-bold text-slate-600">Weight: </span>
                         <span class="text-slate-600">{{$animal->weight}}</span>
@@ -60,18 +62,6 @@
                     </div>
                 </div>
                 <div class="mb-4">
-                </div>
-                <div class="mb-4">
-                </div>
-                <div>
-                    <span class="font-bold text-slate-600">vet?:</span>
-                    <p class="text-slate text-sm mt-2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                        sed ante justo. Integer euismod libero id mauris malesuada tincidunt. Vivamus commodo nulla ut
-                        lorem rhoncus aliquet. Duis dapibus augue vel ipsum pretium, et venenatis sem blandit. Quisque
-                        ut erat vitae nisi ultrices placerat non eget velit. Integer ornare mi sed ipsum lacinia, non
-                        sagittis mauris blandit. Morbi fermentum libero vel nisl suscipit, nec tincidunt mi consectetur.
-                    </p>
                 </div>
 
                     <div class="mt-10">
