@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SendReqController;
+use App\Http\Controllers\VetController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,9 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('sendrequest', SendReqController::class)
     ->only(['index','create','store'])
+    ->middleware(['auth']);
+Route::resource('vet', VetController::class)
+    ->only(['create','store'])
     ->middleware(['auth']);
 
 require __DIR__.'/auth.php';

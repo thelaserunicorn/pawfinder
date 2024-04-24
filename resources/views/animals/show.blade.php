@@ -79,6 +79,8 @@
                                      @if ($animal->user->is(auth()->user()))
 
                                     <a href="{{ route('animals.edit', $animal->id) }}" class="w-full bg-rose-600 text-white py-2 px-4 rounded-full font-bold hover:bg-rose-700">Edit</a>
+
+                                    <a href="{{ route('vet.create') }}" class="w-full bg-rose-600 text-white py-2 px-4 rounded-full font-bold hover:bg-rose-700">Add Vet</a>
                                                                 @endif
                     <a href="{{ route('sendrequest.create') }}" class="w-full bg-rose-600 text-white py-2 px-4 rounded-full font-bold hover:bg-rose-700">Send Request</a>
                         </div>

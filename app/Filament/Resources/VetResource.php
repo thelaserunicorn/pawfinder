@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SendReqResource\Pages;
-use App\Filament\Resources\SendReqResource\RelationManagers;
-use App\Models\SendReq;
+use App\Filament\Resources\VetResource\Pages;
+use App\Filament\Resources\VetResource\RelationManagers;
+use App\Models\Vet;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,24 +13,21 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SendReqResource extends Resource
+class VetResource extends Resource
 {
-    protected static ?string $model = SendReq::class;
+    protected static ?string $model = Vet::class;
 
-    protected static ?string $pluralModelLabel = "Requests";
-    protected static ?string $navigationIcon = 'heroicon-o-archive-box';
+    protected static ?string $navigationIcon = 'heroicon-o-heart';
 
-        public static function canCreate(): bool
-    {
-        return false;
-    }
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 //
                 Forms\Components\TextInput::make('animal_id'),
-                Forms\Components\TextInput::make('animal_name'),
+                Forms\Components\TextInput::make('name'),
+                Forms\Components\TextInput::make('location'),
+                Forms\Components\TextInput::make('phone'),
             ]);
     }
 
@@ -38,18 +35,15 @@ class SendReqResource extends Resource
     {
         return $table
             ->columns([
-                //
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('animal_name'),
-                Tables\Columns\TextColumn::make('animal_id')
+                Tables\Columns\TextColumn::make('animal_id'),
+                Tables\Columns\TextColumn::make('location'),
+                Tables\Columns\TextColumn::make('phone'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-
-                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -69,8 +63,9 @@ class SendReqResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSendReqs::route('/'),
-            'edit' => Pages\EditSendReq::route('/{record}/edit'),
+            'index' => Pages\ListVets::route('/'),
+            'create' => Pages\CreateVet::route('/create'),
+            'edit' => Pages\EditVet::route('/{record}/edit'),
         ];
     }
 }
