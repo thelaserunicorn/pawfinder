@@ -11,7 +11,7 @@
 
 ## Images
 
-![Home](storage/app/public/Screenshot from 2024-04-24 22-23-07.png)
+![Home](images/home.png)
 
 
 ## License
