@@ -22,9 +22,7 @@ class User extends Authenticatable
         if ($panel->getId() === 'admin') {
             return $this->hasRole('super_admin');
         }
-        if ($panel->getId() === 'adoptee') {
-            return $this->hasRole('adoptee');
-        }
+
     }
 
     /**
